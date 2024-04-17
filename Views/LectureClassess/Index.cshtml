@@ -1,25 +1,25 @@
-@model IEnumerable<SchoolManagementApp.mvc.Data.Student>
+@model IEnumerable<SchoolManagementApp.mvc.Data.LectureClass>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Add a New Student</h1>
+<h1>Lecture Classes</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-outline-success"> + Create New</a>
+    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
 </p>
-<table class="table table-stripped table-hover">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.DisplayNameFor(model => model.Time)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.Course)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
+                @Html.DisplayNameFor(model => model.Teacher)
             </th>
             <th></th>
         </tr>
@@ -28,30 +28,30 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.Time)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.Course.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                @Html.DisplayFor(modelItem => item.Teacher.Id)
             </td>
-            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a> 
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Details</a> 
-                <button data-id="@item-Id" class="btn btn-outline-danger deleteBtn" type="button">Delete</button>
+               <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn" type="button">Delete</button>
+
             </td>
         </tr>
 }
     </tbody>
 </table>
 
- <form asp-action="Delete" id="courseDeleteForm">
-        <input type="hidden" id="courseid" name="Id"/>
+<form asp-action="Delete" id="lectureClassDeleteForm">
+        <input type="hidden" id="lectureClassid" name="Id"/>
  </form>
 
-@section Scripts{
+ @section Scripts{
    <script>
      $(function(){
         let table = new DataTable('.table');
@@ -74,12 +74,11 @@
                 
                 var btn = $(this);
                 var id = btn.data("id");
-                $('#courseid').val(id);
-                $('#courseDeleteForm').submit();
+                $('#teachetid').val(id);
+                $('#lectureClassDeleteForm').submit();
               }
             });
         });
-     });
+     }); 
    </script>
-}
-
+   }

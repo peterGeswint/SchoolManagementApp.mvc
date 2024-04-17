@@ -12,4 +12,6 @@ public partial class Course
     public string Code { get; set; } = null!;
 
     public int? Credits { get; set; }
+
+    public virtual ICollection<LectureClass> LectureClasses { get; set; } = new List<LectureClass>();
 }
