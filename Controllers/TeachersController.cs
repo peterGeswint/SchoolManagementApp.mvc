@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagementApp.mvc.Controllers
 {
+    [Authorize]
     public class TeachersController : Controller
     {
         private readonly SchoolManagementDbContext _context;
