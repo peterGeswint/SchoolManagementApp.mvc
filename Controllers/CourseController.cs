@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementApp.mvc.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagementApp.mvc.Controllers
 {
@@ -43,6 +44,7 @@ namespace SchoolManagementApp.mvc.Controllers
         }
 
         // GET: Course/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
